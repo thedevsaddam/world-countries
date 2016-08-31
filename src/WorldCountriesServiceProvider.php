@@ -31,7 +31,7 @@ class WorldCountriesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Register 'notification' instance container to our WorldCountries object
+        // Register 'world-countries' instance container to our WorldCountries object
         $this->app['world-countries'] = $this->app->share(function ($app) {
             return new \Thedevsaddam\WorldCountries\WorldCountries();
         });
