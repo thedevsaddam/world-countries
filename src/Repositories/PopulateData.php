@@ -13,14 +13,11 @@ class PopulateData extends Migration
      */
     public function up()
     {
-        $countries = realpath(__DIR__ . '/data/mysql/countries.sql');
-        DB::unprepared(file_get_contents($countries));
+        DB::unprepared($this->readSQL('countries.sql'));
 
-        $states = __DIR__ . '/data/mysql/states.sql';
-        DB::unprepared(file_get_contents($states));
+        DB::unprepared($this->readSQL('states.sql'));
 
-        $cities = __DIR__ . '/data/mysql/cities.sql';
-        DB::unprepared(file_get_contents($cities));
+        DB::unprepared($this->readSQL('cities.sql'));
     }
 
     /**
@@ -34,4 +31,16 @@ class PopulateData extends Migration
         DB::unprepared('DROP TABLE states');
         DB::unprepared('DROP TABLE cities');
     }
+
+    /**
+     * Read sql file from disk
+     * @param $fileName
+     * @param string $filePath
+     * @return string
+     */
+    private function readSQL($fileName, $filePath = '/data/mysql/')
+    {
+        return file_get_contents(realpath(__DIR__.$filePath.$fileName));
+    }
+
 }

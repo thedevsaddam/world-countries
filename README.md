@@ -12,11 +12,11 @@ Installation
 Via Composer
 
 ``` bash
-$ composer require thedevsaddam/world-countries 1.0
+$ composer require thedevsaddam/world-countries
 ```
 Install manually (add the line to composer.json file)
 ``` bash
-"thedevsaddam/world-countries": "1.0"
+"thedevsaddam/world-countries": "1.1"
 ```
 Open your terminal and hit the command
 ```bash
@@ -90,6 +90,9 @@ $countriesWithStates = $countryModel->with('states')->get();
 $countryModel = WorldCountries::getCountryModel();
 $country = $countryModel->where('name', 'Bangladesh')->first();
 ```
+
+##### Config
+If you change the flag directory name or path then update the config/flag.php file_path according to the path name
 
 ##### Credit
 

@@ -20,6 +20,10 @@ class Flag
 
     }
 
+    /**
+     * Read countries.json file from disk
+     * @throws \Exception
+     */
     private function readFlagFromJson()
     {
         try {
@@ -29,6 +33,10 @@ class Flag
         }
     }
 
+    /**
+     * Fetch countries with flag
+     * @return \Illuminate\Support\Collection
+     */
     public function getCountries()
     {
         $countries = json_decode($this->data, true);

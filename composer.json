@@ -2,10 +2,21 @@
     "name": "thedevsaddam/world-countries",
     "description": "Provide world country list with country code, city, states and flag",
     "type": "package",
+    "keywords": [
+        "thedevsaddam",
+        "world",
+        "countries",
+        "flag",
+        "world-cities",
+        "world-flag"
+    ],
+    "homepage": "https://github.com/thedevsaddam/world-countries",
+    "license": "MIT",
     "authors": [
         {
             "name": "Saddam Hossain",
-            "email": "thedevsaddam@gmail.com"
+            "email": "thedevsaddam@gmail.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "dev",
