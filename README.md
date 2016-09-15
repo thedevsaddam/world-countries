@@ -45,6 +45,11 @@ To drop the populated tables
 php artisan world-countries:drop
 ```
 
+### **Features**
+1. World country list with Official name, short name, flag, latitude, longitude.
+1. World country list with states and cities
+1. World Timezones (coming soon)
+
 ### **Usage**
 To fetch all the countries with flag. This will return a collection object so that you can use the available method of Collection class
 
