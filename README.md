@@ -26,8 +26,7 @@ composer update
 Add the following line to config/app.php file
 
 ```bash
-        Thedevsaddam\WorldCountries\WorldCountriesServiceProvider::class,
-
+Thedevsaddam\WorldCountries\WorldCountriesServiceProvider::class,
 ```
 To publish the configuration and resources
 
@@ -49,13 +48,13 @@ php artisan world-countries:drop
 ### **Usage**
 To fetch all the countries with flag. This will return a collection object so that you can use the available method of Collection class
 
-```bash
+```php
 WorldCountries::getCountriesWithFlag();
 ```
 
 
 ##### Example
-```
+```php
 $countries = WorldCountries::getCountriesWithFlag();
 foreach($countries as $key => $country){
     echo "<img src='".$country['flagLargeUrl']."' />";
@@ -68,7 +67,7 @@ $country = WorldCountries::getCountriesWithFlag()->where('name', 'Bangladesh');
 ```
 
 #### Fetch all the countries with  state and cities ####
-```
+```php
 $countries = WorldCountries::getCountriesWithStateCity();
 
 //Note: This query will take some time to fetch all the countries with its associate states and cities
@@ -76,7 +75,7 @@ $countries = WorldCountries::getCountriesWithStateCity();
 ```
 #### Get Eloquent model to perform custom query
 
-```
+```php
 $countryModel = WorldCountries::getCountryModel();
 
 //Fetch all the countries in array
@@ -89,6 +88,30 @@ $countriesWithStates = $countryModel->with('states')->get();
 
 $countryModel = WorldCountries::getCountryModel();
 $country = $countryModel->where('name', 'Bangladesh')->first();
+```
+
+Note: You can get city and state model as well.  To get them use the methods below
+```php
+$stateModel = WorldCountries::getStateModel();
+$cityModel = WorldCountries::getCityModel();
+//now you can perform any query available to Eloquent model
+```
+
+###### Best uses of this package is to populate dropdown with countries.
+```php
+//first get all the countries and populate the country dropdown
+$countryModel = WorldCountries::getCountryModel();
+$countries = $countryModel->lists('name', 'id');
+
+//you can make an endpoint to fetch all the states against some individual country
+$stateModel = WorldCountries::getStateModel();
+$states = $stateModel->where('country_id', $someRequest->countryId)->get()->toArray();
+return response()-json($states);
+
+// now make another endpoint against the state and fetch all of it's cities.
+$cityModel = WorldCountries::getCityModel();
+$cities = $cityModel->where('state_id, $someRequest->stateId)->get()->toArray();
+return response()->json($cities);
 ```
 
 ##### Config
