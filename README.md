@@ -110,7 +110,7 @@ return response()-json($states);
 
 // now make another endpoint against the state and fetch all of it's cities.
 $cityModel = WorldCountries::getCityModel();
-$cities = $cityModel->where('state_id, $someRequest->stateId)->get()->toArray();
+$cities = $cityModel->where('state_id', $someRequest->stateId)->get()->toArray();
 return response()->json($cities);
 ```
 
